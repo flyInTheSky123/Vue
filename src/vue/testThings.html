@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/vue.min.js"></script>
+<style type="text/css">
+    *{
+        margin: 0 auto;
+        text-align: center;
+        line-height: 100px;
+    }
+    div{
+        width: 150px;
+        cursor: pointer;
+    }
+    #grandfather{
+        background: gray;
+    }
+    #father{
+        background: coral;
+    }
+    #me{
+        background: cyan;
+    }
+    #son{
+        background:orchid;
+    }
+</style>
+<div id="content">
+    <div id="grandfather" @click="click">grandfather
+      <div id="father" @click="click">father
+        <div id="me" @click.self="click">me
+         <div id="son" @click="click">
+           son
+         </div>
+      </div>
+     </div>
+    </div>
+
+</div>
+<script>
+    new Vue({
+        el:'#content',
+        methods:{
+                click:function () {
+                this.id= event.currentTarget.id;
+                alert(this.id)
+            }
+        }
+    })
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+</html>

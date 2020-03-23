@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span id="div1">
+    {{message.name}}
+
+
+</span>
+<script src="../js/vue.min.js"></script>
+<script>
+    var gareen={"name":"gareen","hp":900}
+   new  Vue({
+       el:'#div1',
+       data:{
+           message:gareen
+       }
+   })
+</script>
+
+</body>
+</html>
