@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="../js/vue.min.js"></script>
-<div id="div3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<!--
+if/else
+<div id="div1">
     <button @click="exchange">点击切换</button>
-    <!--<div v-if="show">哈哈哈哈😂</div>-->
+    <div v-if="show">哈哈哈哈😂</div>
     <div v-if="show">测试vue的if.... </div>
     <div v-else>测试vue的else ...</div>
 </div>
 
-<script>
+script>
     new  Vue({
-        el:'#div3',
+        el:'#div1',
         data:{
             show:true
         },
         methods:{
             exchange:function () {
                 this.show=!this.show;
-            }
-
-        }
-
-    })
+            }}
+             })
 
 
 </script>
+-->
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<div id="div2">
+    <button @click="click">看看你中了多少钱！！</button>
+    <div v-if="number>99">恭喜你中了1亿元，你是真的绝地欧皇 😺</div>
+    <div v-else-if="number>92">你运气爆棚了，你中了 1千万！</div>
+    <div v-else-if="number>88">你运气真好，中了 一万元</div>
+    <div v-else-if="number>60">你中了 10元，再接再厉吧！💪</div>
+    <div v-else-if="number>0">你运气真骚啊，一个没中！</div>
+</div>
+
+<script>
+    new Vue({
+        el:'#div2',
+        data:{
+            number:0
+        },
+        methods:{
+            click:function () {
+                this.number=Math.random()*100
+
+            }
+        }
+    })
+</script>
+
+
 </html>
