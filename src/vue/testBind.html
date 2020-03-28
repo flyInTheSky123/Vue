@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/vue.min.js"></script>
+
+<!-- 属性绑定：可以绑定class ,href 等属性。
+    v-bink:href="xxxx" 等于  :href="xxx" ：
+  -->
+
+
+<!--<a v-bink:href="href">绑定herf 事件，点击跳转</a>-->
+<div id="div1">
+<a :href="page">绑定herf 事件，点击跳转</a>
+</div>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    new Vue({
+        el:'#div1',
+        data:{
+            page:'https://support.apple.com/kb/SP748?locale=zh_CN'
+        }
+    })
+
+</script>
+</html>
