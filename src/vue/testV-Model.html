@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<!--双向绑定：v-model :
+    1,vue的对象能把数据传给view ，同时 view也能传给vue对象 即为双向绑定 。
+    2,像下面列子这样，当input里面的值发生变化的时候，就会自动把变化后的值，绑定到Vue对象上去了-->
+
+
+<style>
+    table tr td {
+        border: 1px solid gray;
+        padding: 10px;
+
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 800px;
+        table-layout: fixed;
+    }
+
+    tr.firstLine {
+        background-color: lightGray;
+    }
+</style>
+
+
+<script src="../js/vue.min.js"></script>
+
+
+<!--&lt;!&ndash;1，演示：输入字符，在function 中获取这个字符并且alert . &ndash;&gt;-->
+<!--<div id="div1">-->
+<!--div1-name:<input v-model="name">-->
+<!--<button @click="click">上传</button>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash;2，如果存在data:{ xx:"" }中的字段 与 v-model="xx" 相同，则 v-model-->
+<!--（1）div中的name 要与 data:{}中的字段要一致-->
+<!--（2）&ndash;&gt;-->
+<!--<div id="div2">-->
+<!--div2-name:<input v-model="name">-->
+<!--<button @click="show">show</button>-->
+
+<!--</div>-->
+
+
+<!--3，多类型绑定-->
+
+<div id="div3">
+
+    <table align="center">
+        <tr>
+            <td>视图类型</td>
+            <td>输入数据</td>
+            <td>绑定到vue的值</td>
+        </tr>
+
+        <tr>
+            <td>单行文本</td>
+            <td>
+                <input v-model="input" placeholder="请输入数据">
+            </td>
+            <td>
+                <p>{{input}}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>多行文本</td>
+            <td>
+                <textarea v-model="textarea" placeholder="请输入数据">
+                </textarea>
+            </td>
+            <td>
+                <p>{{textarea}}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>单个复选框</td>
+            <td>
+                <input type="checkbox" v-model="checked">
+            </td>
+            <td>
+                <p>{{checked}}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>多个复选框</td>
+            <td>
+                <input type="checkbox" id="checkbox" value="张三" v-model="checkeds">张三
+                <input type="checkbox" id="checkbox1" value="李薏" v-model="checkeds">李薏
+                <input type="checkbox" id="checkbox3" value="欧露" v-model="checkeds">欧露
+                <input type="checkbox" id="checkbox4" value="赵小红" v-model="checkeds">赵小红
+            </td>
+            <td>
+                <p>{{checkeds}}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>单个按钮</td>
+            <td>
+                <input type="radio" id="radio1" value="男" v-model="radio">男
+                <input type="radio" id="radio2" value="女" v-model="radio">女
+
+            </td>
+            <td>
+                <p>{{radio}}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>单个按钮</td>
+            <td>
+                <select id="select" v-model="selected" size="3" >
+                    <option disabled value=" ">请选择：地点</option>
+                    <option>成都</option>
+                    <option>上海</option>
+                    <option>西安</option>
+                    <option>广州</option>
+                </select>
+
+            </td>
+            <td>
+                <p>{{selected}}</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>多个按钮</td>
+            <td>
+                <select id="select2" multiple v-model="selecteds" size="3" >
+                    <option disabled value=" ">请用ctr+点击 进行多选</option>
+                    <option>成都</option>
+                    <option>上海</option>
+                    <option>西安</option>
+                    <option>广州</option>
+                </select>
+
+            </td>
+            <td>
+                <p>{{selecteds}}</p>
+            </td>
+        </tr>
+
+    </table>
+
+
+</div>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    /**
+     <!--
+     1 -->
+     new Vue({
+        el: '#div1',
+        methods: {
+            click: function () {
+                alert("name:" + name);
+            }
+
+        }
+    })
+
+     <!--2 -->
+     new Vue({
+        el: '#div2',
+        data: {
+            name: "欧露"
+        },
+        methods: {
+            show: function () {
+                alert("name:" + this.name);
+            }
+
+        }
+    })
+     **/
+
+    <!--3 -->
+    new Vue({
+        el: '#div3',
+        data: {
+            input: '',
+            textarea: '',
+            checked: '',
+            checkeds: [],
+            radio: '',
+            selected: '',
+            selecteds: []
+        }
+    })
+
+</script>
+
+
+</html>
