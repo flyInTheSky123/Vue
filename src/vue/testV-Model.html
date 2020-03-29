@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <meta charset="UTF-8">
 <!--双向绑定：v-model :
     1,vue的对象能把数据传给view ，同时 view也能传给vue对象 即为双向绑定 。
@@ -47,108 +47,141 @@
 
 <!--3，多类型绑定-->
 
-<div id="div3">
+<!--<div id="div3">-->
 
-    <table align="center">
-        <tr>
-            <td>视图类型</td>
-            <td>输入数据</td>
-            <td>绑定到vue的值</td>
-        </tr>
+<!--<table align="center">-->
+<!--<tr>-->
+<!--<td>视图类型</td>-->
+<!--<td>输入数据</td>-->
+<!--<td>绑定到vue的值</td>-->
+<!--</tr>-->
 
-        <tr>
-            <td>单行文本</td>
-            <td>
-                <input v-model="input" placeholder="请输入数据">
-            </td>
-            <td>
-                <p>{{input}}</p>
-            </td>
-        </tr>
+<!--<tr>-->
+<!--<td>单行文本</td>-->
+<!--<td>-->
+<!--<input v-model="input" placeholder="请输入数据">-->
+<!--</td>-->
+<!--<td>-->
+<!--<p>{{input}}</p>-->
+<!--</td>-->
+<!--</tr>-->
 
-        <tr>
-            <td>多行文本</td>
-            <td>
-                <textarea v-model="textarea" placeholder="请输入数据">
-                </textarea>
-            </td>
-            <td>
-                <p>{{textarea}}</p>
-            </td>
-        </tr>
+<!--<tr>-->
+<!--<td>多行文本</td>-->
+<!--<td>-->
+<!--<textarea v-model="textarea" placeholder="请输入数据">-->
+<!--</textarea>-->
+<!--</td>-->
+<!--<td>-->
+<!--<p>{{textarea}}</p>-->
+<!--</td>-->
+<!--</tr>-->
 
-        <tr>
-            <td>单个复选框</td>
-            <td>
-                <input type="checkbox" v-model="checked">
-            </td>
-            <td>
-                <p>{{checked}}</p>
-            </td>
-        </tr>
+<!--<tr>-->
+<!--<td>单个复选框</td>-->
+<!--<td>-->
+<!--<input type="checkbox" v-model="checked">-->
+<!--</td>-->
+<!--<td>-->
+<!--<p>{{checked}}</p>-->
+<!--</td>-->
+<!--</tr>-->
 
-        <tr>
-            <td>多个复选框</td>
-            <td>
-                <input type="checkbox" id="checkbox" value="张三" v-model="checkeds">张三
-                <input type="checkbox" id="checkbox1" value="李薏" v-model="checkeds">李薏
-                <input type="checkbox" id="checkbox3" value="欧露" v-model="checkeds">欧露
-                <input type="checkbox" id="checkbox4" value="赵小红" v-model="checkeds">赵小红
-            </td>
-            <td>
-                <p>{{checkeds}}</p>
-            </td>
-        </tr>
+<!--<tr>-->
+<!--<td>多个复选框</td>-->
+<!--<td>-->
+<!--<input type="checkbox" id="checkbox" value="张三" v-model="checkeds">张三-->
+<!--<input type="checkbox" id="checkbox1" value="李薏" v-model="checkeds">李薏-->
+<!--<input type="checkbox" id="checkbox3" value="欧露" v-model="checkeds">欧露-->
+<!--<input type="checkbox" id="checkbox4" value="赵小红" v-model="checkeds">赵小红-->
+<!--</td>-->
+<!--<td>-->
+<!--<p>{{checkeds}}</p>-->
+<!--</td>-->
+<!--</tr>-->
 
-        <tr>
-            <td>单个按钮</td>
-            <td>
-                <input type="radio" id="radio1" value="男" v-model="radio">男
-                <input type="radio" id="radio2" value="女" v-model="radio">女
+<!--<tr>-->
+<!--<td>单个按钮</td>-->
+<!--<td>-->
+<!--<input type="radio" id="radio1" value="男" v-model="radio">男-->
+<!--<input type="radio" id="radio2" value="女" v-model="radio">女-->
 
-            </td>
-            <td>
-                <p>{{radio}}</p>
-            </td>
-        </tr>
+<!--</td>-->
+<!--<td>-->
+<!--<p>{{radio}}</p>-->
+<!--</td>-->
+<!--</tr>-->
 
-        <tr>
-            <td>单个按钮</td>
-            <td>
-                <select id="select" v-model="selected" size="3" >
-                    <option disabled value=" ">请选择：地点</option>
-                    <option>成都</option>
-                    <option>上海</option>
-                    <option>西安</option>
-                    <option>广州</option>
-                </select>
+<!--<tr>-->
+<!--<td>单个按钮</td>-->
+<!--<td>-->
+<!--<select id="select" v-model="selected" size="3">-->
+<!--<option disabled value=" ">请选择：地点</option>-->
+<!--<option>成都</option>-->
+<!--<option>上海</option>-->
+<!--<option>西安</option>-->
+<!--<option>广州</option>-->
+<!--</select>-->
 
-            </td>
-            <td>
-                <p>{{selected}}</p>
-            </td>
-        </tr>
+<!--</td>-->
+<!--<td>-->
+<!--<p>{{selected}}</p>-->
+<!--</td>-->
+<!--</tr>-->
 
-        <tr>
-            <td>多个按钮</td>
-            <td>
-                <select id="select2" multiple v-model="selecteds" size="3" >
-                    <option disabled value=" ">请用ctr+点击 进行多选</option>
-                    <option>成都</option>
-                    <option>上海</option>
-                    <option>西安</option>
-                    <option>广州</option>
-                </select>
+<!--<tr>-->
+<!--<td>多个按钮</td>-->
+<!--<td>-->
+<!--<select id="select2" multiple v-model="selecteds" size="3">-->
+<!--<option disabled value=" ">请用ctr+点击 进行多选</option>-->
+<!--<option>成都</option>-->
+<!--<option>上海</option>-->
+<!--<option>西安</option>-->
+<!--<option>广州</option>-->
+<!--</select>-->
 
-            </td>
-            <td>
-                <p>{{selecteds}}</p>
-            </td>
-        </tr>
+<!--</td>-->
+<!--<td>-->
+<!--<p>{{selecteds}}</p>-->
+<!--</td>-->
+<!--</tr>-->
 
-    </table>
+<!--</table>-->
 
 
+<!--</div>-->
+
+
+<!--4,使用 .lazy ，number，trim进行修饰-->
+
+<!--（1）当使用 lazy时，只有失去焦点时才能进行数据的绑定-->
+<!--
+<div id="div4">
+    <input v-model.lazy="input" placeholder="请输入" > <p>{{input}}</p>
+
+</div>
+-->
+
+<!--（2）当使用number时，把v-model默认的类型String 转换为 number 数字类型-->
+<!--<div id="div5">-->
+
+<!--<input v-model.lazy="string" placeholder="默认的类型是String" type="number">-->
+<!--<span> {{string}} </span>-->
+<!--<span> {{typeof  string}}</span>-->
+<!--</br>-->
+
+<!--<input v-model.lazy.number="number" placeholder="转换为number类型" type="number">-->
+<!--<span>{{number}}</span>-->
+<!--<span> {{typeof  number}}</span>-->
+
+
+<!--</div>-->
+
+<!--（3）当trim，去掉前后空白-->
+<div id="div6">
+    <input v-model.trim="input" placeholder="输入数据">
+    <p> {{input}}</p>
+    </br>
 </div>
 
 
@@ -156,6 +189,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+
 <script>
 
     /**
@@ -187,7 +222,8 @@
      **/
 
     <!--3 -->
-    new Vue({
+    /**
+     new Vue({
         el: '#div3',
         data: {
             input: '',
@@ -197,6 +233,34 @@
             radio: '',
             selected: '',
             selecteds: []
+        }
+    })
+     **/
+
+    <!--4 -->
+    // new Vue({
+    //     el: '#div4',
+    //     data: {
+    //         input: '',
+    //         number:'',
+    //         string:''
+    //     }
+    // })
+
+    // <!--5 -->
+    // new Vue({
+    //     el: '#div5',
+    //     data: {
+    //         number: '',
+    //         string: ''
+    //     }
+    // })
+
+    <!--6 -->
+    new Vue({
+        el: '#div6',
+        data: {
+            input: ' '
         }
     })
 
