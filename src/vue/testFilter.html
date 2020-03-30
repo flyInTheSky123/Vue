@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/vue.min.js"></script>
+<style>
+    table tr td {
+        border: 1px solid gray;
+        padding: 10px;
+
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 800px;
+        table-layout: fixed;
+    }
+
+    tr.firstLine {
+        background-color: lightGray;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <!--过滤器： 使用"|" 隔开 放在后面。
+    执行过程：1，filterFirst 获取数据data
+            2，在function(){}中，对数据处理
+            3，返回处理后的 data。
+            4,filterLast 获取data 数据，
+            5，在function(){}中，对数据处理
+            6，返回处理后的 data。
+
+    -->
+</head>
+<div id="div1">
+    <table align="center">
+        <tr align="center" class="firstLine">
+            <td>输入数据</td>
+            <td>过滤后的结果</td>
+        </tr>
+        <tr align="center">
+            <td><input v-model="data"></td>
+            <td>{{data | filterFirst | filterLast}}</td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    <!-- 全局过滤器 -->
+    Vue.filter("fiterFirst", function (val) {
+        if (!val)
+            return " ";
+        var string = val.toString();
+        //首字母大写
+        return string.charAt(0).toUpperCase() + string.substring(1);
+
+    }),
+    Vue.filter("filterLast", function (val) {
+            if (!val)
+                return " ";
+        var string = val.toString();
+        //首字母大写
+        return string.substring(0, string.length - 1) + string.charAt(string.length - 1).toUpperCase();
+        })
+
+
+
+    new Vue({
+        el: '#div1',
+        data: {
+            data: ''
+        }
+
+        // , //过滤器。
+        // filters: {
+        //     //对首字母进行大写
+        //     filterFirst: function (val) {
+        //         if (!val)
+        //             return " ";
+        //         var string = val.toString();
+        //         //首字母大写
+        //         return string.charAt(0).toUpperCase() + string.substring(1);
+        //
+        //     },
+        //     //对尾字母进行大写
+        //     filterLast: function (val) {
+        //         if (!val)
+        //             return " ";
+        //         var string = val.toString();
+        //         //首字母大写
+        //         return string.substring(0, string.length - 1) + string.charAt(string.length - 1).toUpperCase();
+        //     }
+        //
+        // }
+    })
+</script>
+
+</html>
