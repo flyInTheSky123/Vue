@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<script src="../js/vue.min.js"></script>
+<style>
+    div.product {
+        float: left;
+        border: 1px solid lightGray;
+        width: 200px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+</style>
+
+<style>
+    div.product {
+        float: left;
+        border: 1px solid lightGray;
+        width: 200px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    div.product:hover {
+        border: 1px solid #c40000;
+
+    }
+
+    div.price {
+        color: #c40000;
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 10px;
+    }
+
+    div.productName {
+        color: gray;
+        font-size: 0.8em;
+        margin: 10px;
+    }
+
+    div.sale {
+        float: left;
+        width: 100px;
+        border: 1px solid lightgray;
+        border-width: 1px 0px 0px 0px;
+        color: gray;
+        font-size: 0.8em;
+        padding-left: 10px;
+    }
+
+    div.review {
+        overflow: hidden;
+        border: 1px solid lightgray;
+        border-width: 1px 0px 0px 1px;
+        color: gray;
+        font-size: 0.8em;
+        padding-left: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件（模版）</title>
+</head>
+
+
+<!--步骤7 ，一个template 模版-->
+<div>
+    <div id="template" style="display:none">
+        <div class="product" @click="saleCount">
+            <div class="price">
+                ¥：{{product.price}}
+            </div>
+            <div class="productName">
+                商品名称： {{product.name}}
+            </div>
+            <div class="sale">
+                出售数量：{{product.sale}} 件
+            </div>
+            <div class="review">
+                评价：{{product.review}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="div1">
+
+    <!--步骤4 ，使用双向绑定 ，和属性绑定实现 动态的改变组件参数
+    组件外的参数:<input v-model="outname"> </br>
+    <product1 v-bind:name="outname"></product1>
+
+-->
+    <!--步骤 1 ,2,3 -->
+    <!-- <product1 name="hello,World!"></product1>
+        <product1 name="hello,China"></product1>
+        <product1 name="MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮"></product1>
+    -->
+
+    <!--步骤5 ，带点击的组件
+    <product1 name="MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮" sale="10" ></product1>
+    <product1 name="hello,World!" sale="1000" ></product1>
+    <product1 name="hello,China" sale="2000"></product1>
+-->
+    <!--步骤 6，带点击的组件 + 遍历json 数组
+    <product1  v-for="pr in products " v-bind:product="pr" ></product1>
+-->
+
+    <!--步骤7 ，一个相对完整的产品组件。-->
+    <product1 v-for="pr in products " v-bind:product="pr"></product1>
+</div>
+
+<!--Vue 对象-->
+<script>
+    // 步骤2全局组件, 在不同的页面都可以使用
+    //不带参数的组件
+    Vue.component('product', {
+        template: '<div class="product"  > MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮 </div>'
+    }),
+        <!--步骤 3, 带参数的组件 -->
+        Vue.component('product1', {
+            props: ['name'],
+            template: '<div class="product" >{{name}} </div>'
+        }),
+
+        <!-- 步骤 4, 绑定的带动态的参数的组件 -->
+        Vue.component('product1', {
+            props: ['name'],
+            template: '<div class="product" >{{name}} </div>'
+        })
+
+    <!-- 步骤 5, 带点击的组件 -->
+    Vue.component('product1', {
+        props: ['name', 'sale'],
+        template: '<div    class="product" @click="saleCount" >{{name}}  销量 : {{sale}} </div>',
+        methods: {
+            saleCount: function () {
+                this.sale++;
+
+            }
+        }
+
+    })
+
+
+    <!-- 步骤 6, 带点击的组件 + 遍历json  -->
+    Vue.component('product1', {
+        props: ['product'],
+        template: '<div  class="product"  @click="saleCount> {{product.name}} 销量：{{product.sale}} </div>',
+        methods: {
+            saleCount: function () {
+                this.product.sale = parseInt(this.product.sale);
+                this.product.sale += 1
+            }
+        }
+
+    })
+
+
+    <!-- 步骤 7, 带点击的组件 + 遍历json / 使用 templateObject 代替以前的div -->
+    var templateObject = document.getElementById("template").innerHTML;
+    Vue.component('product1', {
+        props: ['product'],
+        template: templateObject,
+        methods: {
+            saleCount: function () {
+                this.product.sale = parseInt(this.product.sale);
+                this.product.sale += 1
+            }
+        }
+
+    })
+
+
+    new Vue({
+        el: '#div1',
+        data: {
+            //   步骤6  products json数组。
+            // products:[
+            //     {"name":"MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮","sale":"18"},
+            //     {"name":"宾度 男士手包真皮大容量手拿包牛皮个性潮男包手抓包软皮信封包","sale":"35"},
+            //     {"name":"唯美诺新款男士手包男包真皮大容量小羊皮手拿包信封包软皮夹包潮","sale":"29"}
+            // ]
+
+            //步骤7：
+            products: [
+                {"name": "MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮", "price": "889", "sale": "18", "review": "5"},
+                {"name": "宾度 男士手包真皮大容量手拿包牛皮个性潮男包手抓包软皮信封包", "price": "322", "sale": "35", "review": "12"},
+                {"name": "唯美诺新款男士手包男包真皮大容量小羊皮手拿包信封包软皮夹包潮", "price": "523", "sale": "29", "review": "3"}
+            ]
+        }
+        // 步骤 1 , 组件
+        // components: {
+        //     'product': {
+        //         template: '<div class="product"  > MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮 </div>'
+        //
+        //
+        //     }
+        // }
+    })
+</script>
+
+
+</html>
