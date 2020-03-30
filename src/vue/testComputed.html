@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/vue.min.js"></script>
+<style>
+    table tr td{
+        border:1px solid gray;
+        padding:10px;
+
+    }
+    table{
+        border-collapse:collapse;
+        width:800px;
+        table-layout:fixed;
+    }
+    tr.firstLine{
+        background-color: lightGray;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>测试computed</title>
+</head>
+<div id="div1">
+
+    <table align="center" >
+        <tr class="firstLine">
+            <td>人民币</td>
+            <td>美元</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                汇率： <input type="number" v-model.number="exchange" />
+            </td>
+        </tr>
+
+        <tr>
+
+            <td align="center">
+                ￥: <input type="number" v-model.number = "rmb"  />
+            </td>
+            <!--<td align="center"> -->
+            <!--使用computed : -->
+                <!--$: {{ dollar }}-->
+            <!--</td>-->
+            <td align="center">
+                <!--使用methods 要带上 () :-->
+                $: {{ dollar() }}
+            </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#div1',
+            data: {
+                exchange:6.4,
+                rmb:0
+            },
+            //computed：计算，具有缓存的特点，如果数值不改变，仍然使用以前的值不再重新计算。但是methods 是每次都重新计算。
+            // computed:{
+            //     dollar:function() {
+            //         return this.rmb / this.exchange;
+            //     }
+            // },
+            methods:{
+                dollar:function () {
+                    return this.rmb/this.exchange;
+                }
+            }
+        })
+
+    </script>
+
+
+
+    </html>
