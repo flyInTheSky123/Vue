@@ -62,6 +62,18 @@
 <head>
     <meta charset="UTF-8">
     <title>组件（模版）</title>
+    <!--components ：组件
+        1，创建方式：
+            （1） new Vue({
+             components:{  'product1':{} }
+            })
+            (2) Vue.component('product1', {})
+
+        2，使用方式：
+        <div>
+          <product1> </product1>
+         </div>
+        -->
 </head>
 
 
@@ -178,6 +190,8 @@
     new Vue({
         el: '#div1',
         data: {
+            //步骤4
+            outname:'',
             //   步骤6  products json数组。
             // products:[
             //     {"name":"MAXFEEL休闲男士手包真皮手拿包大容量信封包手抓包夹包软韩版潮","sale":"18"},
