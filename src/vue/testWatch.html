@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/vue.min.js"></script>
+<style>
+    table tr td{
+        border:1px solid gray;
+        padding:10px;
+
+    }
+    table{
+        border-collapse:collapse;
+        width:800px;
+        table-layout:fixed;
+    }
+    tr.firstLine{
+        background-color: lightGray;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>testWatch</title>
+</head>
+<!--watch:监听属性值的变化 ，并作出相应的改变
+
+   watch与computed:
+   watch和computed各自处理的数据关系场景不同
+
+  1.watch擅长处理的场景：一个数据影响多个数据
+
+  2.computed擅长处理的场景：一个数据受多个数据影响
+
+  3,相比于watch/computed，methods不处理数据逻辑关系，只提供可调用的函数
+
+-->
+<div id="div1">
+
+    <table align="center" >
+        <tr class="firstLine">
+            <td>人民币</td>
+            <td>美元</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                汇率： <input type="number" v-model.number="exchange" />
+            </td>
+        </tr>
+
+        <tr>
+
+            <td align="center">
+                ￥: <input type="number" v-model.number = "rmb"  />
+            </td>
+            <td align="center">
+                $: <input type="number" v-model.number = "dollar"  />
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+<script>
+    new Vue({
+        el:'#div1',
+        data:{
+            exchange:'',
+            rmb:'',
+            dollar:''
+        },
+        //watch
+        watch:{
+            rmb:function (val) {
+                this.rmb=val;
+                this.dollar=this.rmb/this.exchange;
+            },
+            dollar:function (val) {
+                this.dollar=val;
+                this.rmb=this.dollar*this.exchange;
+
+            }
+
+
+        }
+    })
+
+</script>
+
+
+</html>
