@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/vue.min.js"></script>
+<script src="../js/vue-router.min.js"></script>
+<style>
+
+    a {
+        text-decoration: none;
+    }
+
+    a.router-link-active {
+        /*   color:blue; */
+        background-color: lightGray;
+    }
+
+    div.menu {
+        border: 1px solid gray;
+        float: left;
+    }
+
+    div.menu a {
+        display: block;
+    }
+
+    div.workingRoom {
+        margin-left: 100px;
+    }
+
+    div#app {
+        width: 500px;
+        padding: 10px;
+        margin: 10px auto;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>路由 </title>
+</head>
+
+<div id="app">
+    <div class="menu">
+        <!-- router-link 相当于超链接
+             to :是地址）（路由）-->
+        <router-link to="/user"> users</router-link>
+        <router-link to="/admin"> admin</router-link>
+        <router-link to="/traver"> traver</router-link>
+    </div>
+
+
+<div class="workingRoom">
+    <!--
+        点击上面的/user,那么/user 对应的内容就会显示在router-view 这里
+     -->
+    <router-view></router-view>
+</div>
+
+
+</div>
+
+<script>
+
+    //创建模版
+    var user = {template: '<p>用户管理页面</p> '};
+    var admin = {template: '<p>管理员页面</p>'};
+    var traver = {template: '<p>游客管理页面 </p>'};
+
+
+    //定义路由
+    var routes = [
+        {path: '/user', component: user},
+        {path: '/admin', component: admin},
+        {path: '/traver', component: traver}
+    ]
+
+    //实例化
+    var router = new VueRouter({
+        routes: routes
+    })
+
+    new Vue({
+        el:"#app",
+        router
+
+    })
+
+</script>
+
+
+</html>
