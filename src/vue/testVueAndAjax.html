@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/vue.min.js"></script>
+<script src="../js/fetch.min.js"></script>
+<script src="../js/axios.min.js"></script>
+<style>
+    table tr td {
+        border: 1px solid gray;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 300px;
+    }
+
+    tr.firstLine {
+        background-color: lightGray;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>vue and ajax</title>
+</head>
+
+
+
+<div id="div1">
+
+    <table align="center" >
+        <tr class="firstLine">
+            <td>name</td>
+            <td>hp</td>
+        </tr>
+
+        <tr v-for="hero in heros">
+            <td>{{hero.name}}</td>
+            <td>{{hero.hp}}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+
+<!--fetch -->
+<!--
+<script>
+
+    var url = "fetch.txt";
+    new Vue({
+        el:'#div1',
+        data:{
+            heros:[]
+        },
+        mounted:function () {  //当vue 加载成功才能调用
+            var self=this
+            fetch(url).then(function (response) {
+                response.json().then(function (jsonObject) {
+                    self.heros=jsonObject; //json对象
+                })
+
+            }).catch(function (err) {
+                console.log("error！");
+
+            })
+
+
+        }
+    })
+
+</script>
+-->
+
+
+<!--axios 框架-->
+<script>
+    var  url="fetch.txt";
+    new Vue({
+        el:"#div1",
+        data:{
+            heros:[]
+        },
+        mounted:function () {   //当vue 加载成功才能调用
+            var self=this
+            axios(url).then(function (response) {
+              self.heros=  response.data;  //json对象
+
+            })
+
+        }
+    })
+</script>
+
+
+
+</html>

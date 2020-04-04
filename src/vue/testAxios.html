@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/axios.min.js"></script>
+<div id="div1">
+
+</div>
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX框架axios</title>
+</head>
+<script>
+
+    var url = "fetch.txt"
+
+    axios.get(url).then(function (response) {
+
+        var jsonObject = response.data;
+
+        var json = JSON.stringify(jsonObject)
+
+        document.getElementById("div1").innerHTML=json;
+    })
+
+</script>
+</html>
